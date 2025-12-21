@@ -7,22 +7,27 @@ import ChartCategory from "../../components/ChartCategory";
 import HealthScoreCard from "../../components/HealthScoreCard";
 import AlertCard from "../../components/AlertCard";
 import Loader from "../../components/Loader";
-import { calculateStats, calculateHealthScore } from "../../utils/calculateStats";
+import {
+  calculateStats,
+  calculateHealthScore,
+} from "../../utils/calculateStats";
 
-export default function DashboardOverview(){
+export default function DashboardOverview() {
   const { user } = useContext(AuthContext);
   const [loading, setLoading] = useState(true);
   const [expenses, setExpenses] = useState([]);
   const [goals, setGoals] = useState([]);
 
-  useEffect(()=> {
-    (async ()=> {
+  useEffect(() => {
+    (async () => {
       try {
         const e = await getExpenses({ limit: 500 });
         setExpenses(e.data.data || e.data);
         const g = await getGoals();
         setGoals(g.data || []);
-      } catch (err) { console.error(err); }
+      } catch (err) {
+        console.error(err);
+      }
       setLoading(false);
     })();
   }, []);
@@ -35,12 +40,14 @@ export default function DashboardOverview(){
   return (
     <div className="overview">
       <div className="left-col">
-        <HealthScoreCard score={score} stats={stats} />
+        <HealthScoreCard score={score} stats={stats} expenses={expenses} />
         <AlertCard stats={stats} />
       </div>
       <div className="right-col">
-        <ChartMonthly expenses={expenses} />
-        <ChartCategory expenses={expenses} />
+        <div className="dashboard-charts-row">
+          <ChartMonthly expenses={expenses} />
+          <ChartCategory expenses={expenses} />
+        </div>
       </div>
     </div>
   );
