@@ -1,0 +1,216 @@
+/* === PAGE === */
+.goals-page {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  margin-top: 24px;
+  margin-right: 20px;
+  margin-bottom: 24px;
+}
+
+/* === CARD === */
+.goals-card {
+  padding: 24px;
+  border-radius: 22px;
+  background: linear-gradient(
+    180deg,
+    rgba(28, 28, 28, 0.95),
+    rgba(10, 10, 10, 0.95)
+  );
+  backdrop-filter: blur(18px);
+  box-shadow:
+    0 30px 70px rgba(0, 0, 0, 0.85),
+    inset 0 0 0 1px rgba(255, 215, 120, 0.12);
+}
+
+.goals-title {
+  margin-bottom: 18px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+}
+
+/* === FORM === */
+.goals-form {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr) auto;
+  gap: 14px;
+}
+
+.goals-form input {
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgba(15, 15, 15, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-size: 13px;
+}
+
+/* === GOALS LIST === */
+.goals-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* === GOAL ITEM === */
+.goal-item {
+  padding: 20px 22px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.04);
+  transition: all 0.25s ease;
+}
+
+.goal-item:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* === TOP LAYOUT === */
+.goal-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 28px;
+}
+
+/* === LEFT === */
+.goal-left {
+  flex: 1;
+}
+
+.goal-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #f5d76e;
+  margin-bottom: 4px;
+}
+
+.goal-desc {
+  font-size: 13px;
+  color: #aaa;
+  margin-bottom: 6px;
+}
+
+.goal-deadline {
+  font-size: 12px;
+  color: #9a9a9a;
+}
+
+/* === RIGHT === */
+.goal-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  min-width: max-content;
+}
+
+/* === STATUS BADGE === */
+.goal-status {
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.goal-status.ontrack {
+  background: rgba(76, 217, 100, 0.15);
+  color: #4cd964;
+}
+
+.goal-status.behind {
+  background: rgba(255, 184, 77, 0.15);
+  color: #ffb84d;
+}
+
+.goal-status.overdue {
+  background: rgba(255, 107, 107, 0.15);
+  color: #ff6b6b;
+}
+
+.goal-status.completed {
+  background: rgba(91, 160, 255, 0.15);
+  color: #5ba0ff;
+}
+
+/* === META (AMOUNTS) === */
+.goal-meta {
+  display: flex;
+  gap: 18px;
+  font-size: 12px;
+  color: #ccc;
+}
+
+.goal-meta span {
+  white-space: nowrap;
+}
+
+/* === ACTIONS === */
+.goal-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+/* === PROGRESS === */
+.goal-progress {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.progress-track {
+  flex: 1;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #f5d76e, #4cd964);
+  transition: width 0.6s ease;
+}
+
+.progress-text {
+  font-size: 12px;
+  font-weight: 600;
+  color: #f5d76e;
+  min-width: 36px;
+  text-align: right;
+}
+
+/* === EMPTY STATE === */
+.goals-empty {
+  font-size: 13px;
+  color: #888;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 900px) {
+  .goals-form {
+    grid-template-columns: 1fr;
+  }
+
+  .goal-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .goal-right {
+    align-items: flex-start;
+  }
+
+  .goal-meta {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .goal-actions {
+    justify-content: flex-start;
+  }
+}

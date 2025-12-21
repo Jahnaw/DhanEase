@@ -1,14 +1,49 @@
 import React from "react";
+import "./AlertCard.css";
 
-export default function AlertCard({ stats = {} }){
+export default function AlertCard({ stats = {} }) {
   const alerts = [];
-  if (stats.savingsPercent < 10) alerts.push("Savings are under 10% of income — try to cut expenses.");
-  if (stats.monthOverMonthIncrease > 20) alerts.push("This month's spend increased >20% compared to last month.");
+
+  // WARNING: Low savings
+  if (stats.savingsPercent < 10) {
+    alerts.push({
+      type: "warning",
+      message: "Savings are under 10% of income. Consider reducing expenses."
+    });
+  }
+
+  // DANGER: High spending increase
+  if (stats.monthOverMonthIncrease > 20) {
+    alerts.push({
+      type: "danger",
+      message: "Spending increased by more than 20% compared to last month."
+    });
+  }
+
+  // INFO: No alerts
+  if (alerts.length === 0) {
+    alerts.push({
+      type: "info",
+      message: "No alerts — your finances look healthy."
+    });
+  }
+
   return (
-    <div className="alerts">
-      <h4>Smart Alerts</h4>
-      {alerts.length === 0 ? <div className="empty">No alerts — good job!</div> :
-        alerts.map((a,i) => <div className="alert-card" key={i}>{a}</div>)}
+    <div className="alert-card-wrapper">
+      <h3 className="alert-title">Smart Alerts</h3>
+
+      <div className="alert-list">
+        {alerts.map((alert, index) => (
+          <div key={index} className={`alert-item ${alert.type}`}>
+            <span className="alert-icon">
+              {alert.type === "info" && "✓"}
+              {alert.type === "warning" && "⚠"}
+              {alert.type === "danger" && "⛔"}
+            </span>
+            <span className="alert-text">{alert.message}</span>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
