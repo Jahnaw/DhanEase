@@ -293,12 +293,54 @@
 }
 
 /* ================= RESPONSIVE ================= */
-@media (max-width: 1024px) {
-    .hero-card {
-        flex-direction: column;
-    }
+@media (max-width: 1280px) {
+  .hero-card {
+    gap: 24px;
+  }
 
-    .home-grid {
-        grid-template-columns: 1fr;
-    }
+  .home-grid {
+    grid-template-columns: 2fr 1fr;
+  }
 }
+/* laptop/small desktop */
+@media (max-width: 1024px) {
+  .hero-card {
+    flex-direction: column;
+  }
+
+  .hero-left h1 {
+    font-size: 28px;
+  }
+
+  .hero-balance strong {
+    font-size: 26px;
+  }
+
+  .home-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* tablet */
+@media (max-width: 768px) {
+  .home {
+    padding: 16px;
+  }
+
+  .hero-card {
+    padding: 20px;
+  }
+
+  .hero-status {
+    max-width: 100%;
+    font-size: 14px;
+  }
+
+  .insight-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .quick-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
