@@ -9,7 +9,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import "./healthScoreCard.css";
+import "./HealthScoreCard.css";
 
 ChartJS.register(
   LineElement,
